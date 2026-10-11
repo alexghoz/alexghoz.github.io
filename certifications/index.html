@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Certifications Alex Ghozzi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout : un dossier de candidature — en-tête d'identité, bande des scores, puis les attestations classées par domaine, chacune avec son aperçu cliquable. */
+:root{
+  --paper:#f6f7f8; --sheet:#ffffff; --ink:#15212b; --muted:#5b6872; --line:#dde2e6;
+  --accent:#0d5c4c; --accent-soft:#e3efeb; --frame:#eceff1; --scrim:rgba(12,18,24,.86);
+  --display:"Libre Caslon Display", "Times New Roman", serif;
+  --body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0f1519; --sheet:#161e24; --ink:#e6ecef; --muted:#9aa8b1; --line:#26323a;
+  --accent:#6fcbb2; --accent-soft:#163029; --frame:#1d272e; --scrim:rgba(4,7,9,.9); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0f1519; --sheet:#161e24; --ink:#e6ecef; --muted:#9aa8b1; --line:#26323a;
+  --accent:#6fcbb2; --accent-soft:#163029; --frame:#1d272e; --scrim:rgba(4,7,9,.9); color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--paper);color:var(--ink);font:400 15px/1.6 var(--body);padding-inline:20px;padding-block:0 64px}
+.wrap{max-width:1080px;margin:0 auto}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+header.id{display:grid;grid-template-columns:1fr auto;gap:24px 40px;align-items:end;padding-block:56px 8px}
+header.id + main section:first-child{padding-top:36px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+h1{font:400 clamp(40px,7vw,68px)/1 var(--display);margin:0;letter-spacing:-.01em;text-wrap:balance}
+.lede{margin:16px 0 0;color:var(--muted);max-width:56ch}
+.contact{display:flex;flex-direction:column;gap:6px;font:400 13px/1.4 var(--mono);color:var(--muted);text-align:right}
+.contact a{text-decoration:none;border-bottom:1px solid currentColor}
+
+.scores{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.score{padding:22px 20px 22px 0;display:flex;flex-direction:column;gap:4px}
+.score + .score{padding-left:20px;border-left:1px solid var(--line)}
+.score b{font:400 34px/1 var(--display);font-variant-numeric:tabular-nums}
+.score b small{font:400 15px/1 var(--mono);color:var(--muted);margin-left:2px}
+.score span{font-size:13px;color:var(--muted)}
+
+section{padding-top:44px}
+section h2{display:flex;align-items:baseline;gap:12px;font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 18px}
+section h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+
+.cert{background:var(--sheet);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.thumb{all:unset;cursor:zoom-in;display:block;aspect-ratio:4/3;background:var(--frame);position:relative;overflow:hidden}
+.thumb img{position:absolute;inset:14px;width:calc(100% - 28px);height:calc(100% - 28px);object-fit:contain;filter:drop-shadow(0 2px 8px rgba(0,0,0,.14));transition:transform .35s ease}
+.thumb:hover img,.thumb:focus-visible img{transform:scale(1.03)}
+.thumb .zoom{position:absolute;right:10px;bottom:10px;font:500 11px/1 var(--mono);letter-spacing:.06em;background:var(--sheet);color:var(--ink);border:1px solid var(--line);padding:6px 8px;border-radius:6px;opacity:.92}
+.body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.cert h3{font:600 17px/1.3 var(--body);margin:0;text-wrap:balance}
+.issuer{margin:0;color:var(--muted);font-size:14px}
+.meta{display:flex;flex-wrap:wrap;gap:6px}
+.pill{font:500 12px/1 var(--mono);padding:6px 8px;border-radius:5px;background:var(--frame);color:var(--ink);font-variant-numeric:tabular-nums}
+.pill.hi{background:var(--accent-soft);color:var(--accent)}
+.note{margin:0;font-size:14px;color:var(--muted)}
+.verify{margin-top:auto;padding-top:6px;font:500 13px/1.3 var(--mono)}
+.verify a{text-decoration:none;border-bottom:1px solid currentColor}
+.verify code{font:inherit;color:var(--ink)}
+
+footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+
+/* Visionneuse */
+.lb{position:fixed;inset:0;background:var(--scrim);display:grid;grid-template-rows:auto 1fr auto;z-index:10;padding:calc(env(safe-area-inset-top,0px) + 12px) 16px calc(env(safe-area-inset-bottom,0px) + 16px)}
+.lb-top{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#fff;font:500 13px/1.3 var(--mono)}
+.lb-top span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lb figure{margin:0;display:flex;align-items:center;justify-content:center;min-height:0;padding:12px 0}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;border-radius:4px;box-shadow:0 10px 40px rgba(0,0,0,.5);background:#fff}
+.lb-nav{display:flex;justify-content:center;gap:10px}
+.lb button{font:500 13px/1 var(--mono);color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:10px 14px;cursor:pointer}
+.lb button:hover{background:rgba(255,255,255,.22)}
+
+@media (max-width:720px){
+  header.id{grid-template-columns:1fr;padding-top:36px}
+  .contact{text-align:left}
+  .scores{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .score:nth-child(3){padding-left:0;border-left:0}
+  .score:nth-child(n+3){border-top:1px solid var(--line)}
+  .grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.thumb img{transition:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="id">
+    <div>
+      <p class="eyebrow">Certifications et scores</p>
+      <h1>Alex Ghozzi</h1>
+      <p class="lede">Étudiant en Master 1 Programme Grande École à emlyon business school. Recherche un stage de 6 mois en private equity à partir de juillet ou septembre 2027.</p>
+    </div>
+    <div class="contact">
+      <span>ghoz.alex@gmail.com</span>
+      <span>+33 7 70 40 50 73</span>
+      <a href="https://www.linkedin.com/in/alex-ghozzi/" target="_blank" rel="noopener">linkedin.com/in/alex-ghozzi</a>
+    </div>
+  </header>
+
+  <main id="list"></main>
+
+</div>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Aperçu de l'attestation">
+  <div class="lb-top"><span id="lb-title"></span><button id="lb-close" type="button">Fermer ✕</button></div>
+  <figure><img id="lb-img" alt=""></figure>
+  <div class="lb-nav"><button id="lb-prev" type="button">← Précédente</button><button id="lb-next" type="button">Suivante →</button></div>
+</div>
+
+<script>
+const groups=[
+ {name:"Finance",items:[
+  {img:"bloomberg",title:"Bloomberg Finance Fundamentals",issuer:"Bloomberg for Education",pills:[["Octobre 2026"]],
+   note:"Compétences validées : finance, marchés financiers.",
+   verify:{label:"Vérifier sur Bloomberg",url:"https://portal.bloombergforeducation.com/certificates/nFRLk1isShrZHa6JEfAEg5K2"}},
+  {img:"yale",title:"Financial Markets",issuer:"Yale University, via Coursera",pills:[["30 décembre 2025"]],
+   note:"Cours du professeur Robert Shiller, prix Nobel d'économie 2013 : marchés financiers, gestion des risques, finance comportementale.",
+   verify:{label:"Vérifier sur Coursera",url:"https://coursera.org/verify/2LHT2ZRXSLHG"}}
+ ]},
+ {name:"Tests et concours",items:[
+  {img:"toeic",title:"TOEIC Listening & Reading",issuer:"ETS",pills:[["940/990","hi"],["Listening 495"],["Reading 445"]],
+   note:"Test passé le 31 mars 2026, valide jusqu'au 31 mars 2028."},
+  {img:"tagemage",title:"Tage Mage",issuer:"FNEGE",pills:[["440/600","hi"],["Problèmes 42/60"],["Verbal 42/60"],["Logique 48/60"]],
+   note:"Session du 6 décembre 2025."},
+  {img:"message",title:"Score IAE Message",issuer:"Réseau des IAE, session à l'IAE de Nice",pills:[["255/400","hi"],["Moyenne session 173"]],
+   note:"Session du 24 février 2026, valide pour les rentrées 2026 à 2028. Raisonnement logique : 85/100.",
+   verify:{label:"Numéro SIM",code:"2584833"}}
+ ]},
+ {name:"Compétences numériques",items:[
+  {img:"pix",title:"Certification Pix",issuer:"GIP Pix",pills:[["489/895","hi"],["Indépendant 2"]],
+   note:"Certifiée le 10 mars 2026 : recherche d'information, outils collaboratifs, traitement de texte, tableur, sécurité des données.",
+   verify:{label:"Code à saisir sur app.pix.fr",code:"P-3TJM29TM",url:"https://app.pix.fr/verification-certificat"}}
+ ]},
+ {name:"Entrepreneuriat",items:[
+  {img:"snee27",title:"Statut National Étudiant-Entrepreneur",issuer:"Pépite Université de Lyon",pills:[["Année 2026-2027","hi"]],
+   note:"Renouvellement du statut pour l'année universitaire en cours."},
+  {img:"snee",title:"Statut National Étudiant-Entrepreneur",issuer:"Pépite PACA-Est",pills:[["Année 2025-2026"]],
+   note:"Statut obtenu pour le projet Linksy."}
+ ]}
+];
+const flat=[];const list=document.getElementById("list");
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+for(const g of groups){
+  const sec=document.createElement("section");
+  sec.innerHTML=`<h2>${esc(g.name)}</h2><div class="grid"></div>`;
+  const grid=sec.querySelector(".grid");
+  for(const c of g.items){
+    const i=flat.push(c)-1;
+    let v="";
+    if(c.verify){
+      const code=c.verify.code?` <code>${esc(c.verify.code)}</code>`:"";
+      v=c.verify.url?`<div class="verify"><a href="${c.verify.url}" target="_blank" rel="noopener">${esc(c.verify.label)} ↗</a>${code}</div>`
+                    :`<div class="verify">${esc(c.verify.label)}${code}</div>`;
+    }
+    const el=document.createElement("article");el.className="cert";
+    el.innerHTML=`<button class="thumb" type="button" data-i="${i}" aria-label="Agrandir l'attestation ${esc(c.title)}">
+        <img src="img/${c.img}_t.jpg" alt="Attestation ${esc(c.title)}" loading="lazy"><span class="zoom">Agrandir</span></button>
+      <div class="body"><h3>${esc(c.title)}</h3><p class="issuer">${esc(c.issuer)}</p>
+        <div class="meta">${c.pills.map(p=>`<span class="pill ${p[1]||""}">${esc(p[0])}</span>`).join("")}</div>
+        <p class="note">${esc(c.note)}</p>${v}</div>`;
+    grid.appendChild(el);
+  }
+  list.appendChild(sec);
+}
+const lb=document.getElementById("lb"),lbImg=document.getElementById("lb-img"),lbT=document.getElementById("lb-title");
+let cur=0,last=null;
+function show(i){cur=(i+flat.length)%flat.length;const c=flat[cur];lbImg.src=`img/${c.img}.jpg`;lbImg.alt=`Attestation ${c.title}`;lbT.textContent=`${c.title} · ${cur+1}/${flat.length}`;}
+function open(i){last=document.activeElement;show(i);lb.hidden=false;document.getElementById("lb-close").focus();}
+function close(){lb.hidden=true;lbImg.removeAttribute("src");if(last)last.focus();}
+list.addEventListener("click",e=>{const b=e.target.closest(".thumb");if(b)open(+b.dataset.i);});
+document.getElementById("lb-close").onclick=close;
+document.getElementById("lb-prev").onclick=()=>show(cur-1);
+document.getElementById("lb-next").onclick=()=>show(cur+1);
+lb.addEventListener("click",e=>{if(e.target===lb||e.target.tagName==="FIGURE")close();});
+document.addEventListener("keydown",e=>{if(lb.hidden)return;if(e.key==="Escape")close();if(e.key==="ArrowRight")show(cur+1);if(e.key==="ArrowLeft")show(cur-1);});
+</script>
+</body>
+</html>
